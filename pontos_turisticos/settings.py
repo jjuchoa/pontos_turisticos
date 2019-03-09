@@ -131,3 +131,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# para foto instalar a biblioteca Pillow (pip install Pillow)
+
+MEDIA_ROOT = 'imagens'
+
+MEDIA_URL = '/media/'
