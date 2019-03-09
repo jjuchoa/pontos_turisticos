@@ -1,3 +1,4 @@
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from core.models import PontoTuristico
@@ -40,4 +41,16 @@ class PontoTuristicoViewSet(ModelViewSet):
     # Atualiza parte dos atributos do registro
     # Verbo html PATCH
     def partial_update(self, request, *args, **kwargs):
+        pass
+
+    # Definir onde o endpoint será disparado (methods)
+    # Para recuperar a PK (detail=True) para o endpoint (detail=False)
+    # http://127.0.0.1:8000/pontosturisticos/1/denunciar
+    @action(methods=['get'], detail=True)
+    def denunciar(self, request, pk=None):
+        pass
+
+    # http://127.0.0.1:8000/pontosturisticos/teste
+    @action(methods=['get'], detail=False)
+    def teste(self, request):
         pass
