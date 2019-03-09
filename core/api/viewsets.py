@@ -17,3 +17,7 @@ class PontoTuristicoViewSet(ModelViewSet):
 
     # def create(self, request, *args, **kwargs):
     #     return Response({'Hello': requeste.data['nome']})
+
+    # Sempre editar o método DELETAR nas APIs para controlar permissões, logs e tipo de delete(físico ou lógico)
+    def destroy(self, request, *args, **kwargs):
+        pass
