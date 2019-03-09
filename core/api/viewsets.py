@@ -10,8 +10,21 @@ class PontoTuristicoViewSet(ModelViewSet):
     # queryset = PontoTuristico.filter(aprovado=True)
     serializer_class = PontoTuristicoSerializer
 
+    # Query String (http://127.0.0.1:8000/pontosturisticos/?id=1&nome=ponto%20x&descricao=teste)
     def get_queryset(self):
-        return PontoTuristico.objects.all()
+        id = self.request.query_params.get('id', None)
+        nome = self.request.query_params.get('nome', None)
+        descricao = self.request.query_params.get('descricao', None)
+        queryset = PontoTuristico.objects.all()
+
+        if id:
+            queryset = PontoTuristico.objects.filter(pk=id)
+        if nome:
+            queryset = queryset.filter(nome__iexact=nome)
+        if descricao:
+            queryset = queryset.filter(descricao__iexact=descricao)
+
+        return queryset
 
     # List é para o listar todos os itens do endpoint
     # Verbo html GET em todos os registros
