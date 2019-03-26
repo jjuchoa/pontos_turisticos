@@ -24,6 +24,8 @@ from atracoes.api.viewsets import AtracaoViewSet
 from avaliacoes.api.viewsets import AvaliacaoViewSet
 from comentarios.api.viewsets import ComentarioViewSet
 from enderecos.api.viewsets import EnderecoViewSet
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 admin.autodiscover()
 
@@ -38,4 +40,5 @@ router.register(r'enderecos', EnderecoViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('api-token-auth/', obtain_auth_token),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
