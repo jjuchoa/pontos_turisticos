@@ -16,6 +16,7 @@ class PontoTuristicoViewSet(ModelViewSet):
     #'=': 'iexact',
     #'@': 'search',
     #'$': 'iregex',
+    lookup_field = 'nome'
 
     # Query String (http://127.0.0.1:8000/pontosturisticos/?id=1&nome=ponto%20x&descricao=teste)
     def get_queryset(self):
